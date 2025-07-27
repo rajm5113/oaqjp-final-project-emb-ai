@@ -1,12 +1,36 @@
-let RunSentimentAnalysis = ()=>{
-    textToAnalyze = document.getElementById("textToAnalyze").value;
+// Wait for page to fully load
+document.addEventListener("DOMContentLoaded", function () {
+    const resultCard = document.querySelector(".result-card");
+    const form = document.querySelector("form");
+    const input = document.querySelector("#text");
+    const resetBtn = document.querySelector("#reset-btn");
+    const submitBtn = document.querySelector("button[type='submit']");
 
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("system_response").innerHTML = xhttp.responseText;
-        }
-    };
-    xhttp.open("GET", "emotionDetector?textToAnalyze"+"="+textToAnalyze, true);
-    xhttp.send();
-}
+    // Add animation to result card
+    if (resultCard) {
+        resultCard.classList.add("fade-in");
+    }
+
+    // Focus effect for input
+    input.addEventListener("focus", () => {
+        input.style.boxShadow = "0 0 10px #00c6ff";
+    });
+
+    input.addEventListener("blur", () => {
+        input.style.boxShadow = "none";
+    });
+
+    // Reset button
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            input.value = "";
+            resultCard?.classList.remove("fade-in");
+        });
+    }
+
+    // Loader animation on submit (optional)
+    form.addEventListener("submit", () => {
+        submitBtn.innerText = "Analyzing...";
+        submitBtn.disabled = true;
+    });
+});

@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Emotion Result</title>
+</head>
+<body>
+    <h1>Detected Emotion: {{ emotion }}</h1>
+    <p>All Scores:</p>
+    <ul>
+        {% for key, value in scores.items() %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Try again</a>
+</body>
+</html>
