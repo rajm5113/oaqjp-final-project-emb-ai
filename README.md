@@ -79,8 +79,4 @@ Output: Dominant Emotion: Joy
 
 ## Author
 
-Your Name
-
-## License
-
-MIT License
+Raj Mishra
